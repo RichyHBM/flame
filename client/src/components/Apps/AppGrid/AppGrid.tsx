@@ -18,11 +18,24 @@ export const AppGrid = (props: Props): JSX.Element => {
     if (!props.apps.length) {
       apps = <Message>No apps match your search criteria</Message>;
     } else {
+      let listCategories: Array<number> = props.apps.map(app => { return app.categoryId } ).filter((value, index, self) => { return self.indexOf(value) === index; } ).sort();     
       apps = (
-        <div className={classes.AppGrid}>
-          {props.apps.map((app: App): JSX.Element => {
-            return <AppCard key={app.id} app={app} />;
-          })}
+        <div>
+          { 
+            listCategories.map((category, index, array) => {
+              return (
+              <div>
+                <div className={classes.AppGrid}>
+                {
+                  props.apps.filter( 
+                    (value, index, self) => { return category == value.categoryId; } 
+                  ).map(app => { return <AppCard key={app.id} app={app} />; })
+                }
+                </div>
+                <div className={(index != array.length-1)?classes.AppGridDivider:""}></div>
+              </div>);
+            })
+          }
         </div>
       );
     }

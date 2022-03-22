@@ -44,6 +44,7 @@ const useKubernetes = async (apps) => {
           url: annotations['flame.pawelmalak/url'],
           description: annotations['flame.pawelmalak/description'],
           icon: annotations['flame.pawelmalak/icon'] || 'kubernetes',
+          categoryId: annotations['flame.pawelmalak/categoryId'],
         });
       }
     }

@@ -36,6 +36,11 @@ const App = sequelize.define(
       allowNull: false,
       defaultValue: '',
     },
+    categoryId: {
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      defaultValue: 0,
+    },
   },
   {
     tableName: 'apps',

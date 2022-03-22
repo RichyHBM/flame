@@ -92,6 +92,7 @@ const useDocker = async (apps) => {
           const names = labels['flame.name'].split(';');
           const urls = labels['flame.url'].split(';');
           const description = labels['flame.description'];
+          const categoryId = labels['flame.categoryId'];
           let icons = '';
 
           if ('flame.icon' in labels) {
@@ -103,6 +104,7 @@ const useDocker = async (apps) => {
             url: urls[i] || urls[0],
             icon: icons[i] || 'docker',
             description: description,
+            categoryId: categoryId,
           });
         }
       }
